@@ -46,7 +46,7 @@ export class PersonListComponent implements OnInit {
       this.pessoaEditada.data_admissao
     );
 
-    // 1. Implemente a lógica para enviar as edições da pessoa para o servidor
+    //lógica para enviar as edições da pessoa para o servidor
     this.personService
       .updatePerson(this.pessoaEditada.id_pessoa, this.pessoaEditada)
       .subscribe(
@@ -54,13 +54,13 @@ export class PersonListComponent implements OnInit {
           // Sucesso: As edições foram salvas com sucesso
           console.log('Edições da pessoa foram salvas com sucesso.');
 
-          // 3. Limpe a variável pessoaEditada
+          //Limpe a variável pessoaEditada
           this.pessoaEditada = {};
 
-          // 4. Oculte o formulário de edição
+          // Oculte o formulário de edição
           this.mostrarFormularioEdicao = false;
 
-          // 5. Atualize a lista de pessoas após a edição ser concluída
+          // Atualize a lista de pessoas após a edição ser concluída
           this.atualizarListaPessoas();
         },
         (error) => {
@@ -77,7 +77,7 @@ export class PersonListComponent implements OnInit {
 
     //mostrarFormularioEdicao como true para mostrar o formulário de edição
     this.mostrarFormularioEdicao = true;
-    // Suponha que a data original seja um campo do objeto pessoa chamado 'data_nascimento'
+
     this.pessoaEditada.data_nascimento = this.datePipe.transform(
       this.pessoaEditada.data_nascimento,
       'dd/MM/yyyy'
@@ -87,7 +87,7 @@ export class PersonListComponent implements OnInit {
       'dd/MM/yyyy'
     );
 
-    // Role suavemente para o formulário de edição
+    // Rolar suavemente para o formulário de edição
     const elementoFormulario = document.getElementById('formulario-edicao');
     if (elementoFormulario) {
       elementoFormulario.scrollIntoView({
@@ -142,10 +142,10 @@ export class PersonListComponent implements OnInit {
   }
 
   formatarData(data: string): string {
-    // Divida a data original 'DD/MM/AAAA' em partes
+    // Dividindo a data original 'DD/MM/AAAA' em partes
     const partesData = data.split('/');
 
-    // Reorganize as partes da data no formato 'AAAA-MM-DD'
+    // Reorganizando as partes da data no formato 'AAAA-MM-DD'
     return `${partesData[2]}-${partesData[1]}-${partesData[0]}`;
   }
 
@@ -194,7 +194,7 @@ export class PersonListComponent implements OnInit {
   }
 
   adicionarRegistro() {
-    // Certifique-se de que os dados do novo registro estejam preenchidos corretamente
+    // Certificando-se de que os dados do novo registro estejam preenchidos corretamente
     if (
       this.novoRegistro.nome &&
       this.novoRegistro.rg &&
