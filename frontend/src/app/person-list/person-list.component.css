@@ -1,5 +1,5 @@
 
-/* Estilize o formulário e centralize-o na tela */
+/* formulário */
 form {
   max-width: 400px;
   margin: 0 auto;
@@ -10,7 +10,7 @@ form {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilize os campos de entrada */
+/*campos de entrada */
 input {
   width: 100%;
   padding: 10px;
@@ -20,7 +20,7 @@ input {
   box-sizing: border-box;
 }
 
-/* Estilize o botão de envio */
+/* botão de envio */
 button[type="submit"] {
   background-color: #007bff;
   color: #fff;
@@ -62,7 +62,7 @@ button[type="button"] {
   align-items: center;
 }
 
-/* Adicione estilo quando o cursor pairar sobre o botão */
+/*estilo quando o cursor pairar sobre o botão */
 button[type="submit"]:hover {
   background-color: #0056b3;
 }
@@ -71,14 +71,14 @@ button[type="button"]:hover {
   background-color: #0056b3;
 }
 
-/* Estilize rótulos para os campos de entrada */
+/*rótulos para os campos de entrada */
 label {
   font-weight: bold;
   display: block;
   margin-top: 10px;
 }
 
-/* Adicione margem superior para o botão de envio */
+/*margem superior para o botão de envio */
 button[type="submit"] {
   margin-top: 15px;
 }
@@ -100,7 +100,7 @@ button[type="submit"] {
 
 
 .person-card {
-  width: 80%; /* Ajuste a largura conforme necessário */
+  width: 80%;
   margin: 0 auto;
   padding: 16px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
@@ -137,8 +137,7 @@ button[type="submit"] {
   margin-right: 10px;
 }
 
-
-/* Adicione este estilo ao seu arquivo CSS/SCSS */
+/*-----------------------------------------*/
 
 .back-to-top-button {
   position: fixed;
