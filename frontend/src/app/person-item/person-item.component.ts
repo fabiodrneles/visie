@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./person-item.component.css'],
 })
 export class PersonItemComponent {
-  @Input() person: any; // Adicione esta propriedade de entrada para receber os dados da pessoa
+  @Input() person: any; //propriedade de entrada para receber os dados da pessoa
   @Input() verMais: any;
   @Input() editar: any;
   @Input() excluir: any;

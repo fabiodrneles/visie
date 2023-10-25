@@ -1,7 +1,9 @@
 <div>
+
   <span>{{ person.nome.split(' ')[0] }}</span>
   <span style="margin-left: 40px;">{{ person.data_admissao | date:'dd/MM/yyyy' }}</span>
   <button (click)="verMais(person)" style="margin-left: 40px;">Ver mais</button>
   <button (click)="editar(person)">Editar</button>
   <button (click)="excluir(person)">Excluir</button>
+
 </div>
