@@ -66,12 +66,12 @@ app.post('/pessoas', (req, res) => {
 });
 
 // Rota para atualizar dados de uma pessoa
-app.put('/pessoas/:id_pessoa', (req, res) => {
-  const id = req.params.id;
+app.put(`/pessoas/:id_pessoa`, (req, res) => {
+  const id_pessoa = req.params.id_pessoa;
   const { nome, rg, cpf, data_nascimento, data_admissao, funcao } = req.body;
   const query = 'UPDATE pessoas SET nome=?, rg=?, cpf=?, data_nascimento=?, data_admissao=?, funcao=? WHERE id_pessoa=?';
 
-  db.query(query, [nome, rg, cpf, data_nascimento, data_admissao, funcao, id], (err, result) => {
+  db.query(query, [nome, rg, cpf, data_nascimento, data_admissao, funcao, id_pessoa], (err, result) => {
     if (err) {
       console.error('Erro ao executar a consulta: ' + err.message);
       res.status(500).send('Erro ao atualizar a pessoa.');
@@ -84,7 +84,7 @@ app.put('/pessoas/:id_pessoa', (req, res) => {
 
 
 // Rota para buscar os dados de uma pessoa por ID
-app.get('/pessoas/:id', (req, res) => {
+app.get('/pessoas/:id_pessoa', (req, res) => {
   const id = req.params.id;
   const query = 'SELECT * FROM pessoas WHERE id_pessoa = ?';
 

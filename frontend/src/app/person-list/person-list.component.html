@@ -1,1 +1,116 @@
-<p>person-list works!</p>
+<mat-card class="person-card">
+  <div class="person-list">
+     <button (click)="alternarMostrarFormulario()" class="button-newRegister">
+     {{ mostrarFormulario ? 'Fechar Formulário' : 'Adicionar novo registro' }}
+     </button>
+     <div *ngIf="mostrarFormulario">
+        <form (ngSubmit)="adicionarRegistro()">
+           <input type="text" name="nome" placeholder="Nome Completo (obrigatório)" [(ngModel)]="novoRegistro.nome" required>
+           <input type="text" name="rg" placeholder="RG (obrigatório)" [(ngModel)]="novoRegistro.rg" required>
+           <input type="text" name="cpf" placeholder="CPF (obrigatório)" [(ngModel)]="novoRegistro.cpf" required>
+           <label for="data_nascimento">Data de Nascimento (obrigatório)</label>
+           <input type="date" name="data_nascimento" [(ngModel)]="novoRegistro.data_nascimento" required>
+           <label for="data_admissao">Data de Admissão (obrigatório)</label>
+           <input type="date" name="data_admissao" [(ngModel)]="novoRegistro.data_admissao" required>
+           <input type="text" name="funcao" placeholder="Função (obrigatório)" [(ngModel)]="novoRegistro.funcao" required>
+           <div class="save-cancel">
+              <button type="submit">Salvar</button>
+              <button type="button" (click)="cancelarCadastro()">Cancelar</button>
+           </div>
+        </form>
+     </div>
+     <div id="formulario-edicao" *ngIf="mostrarFormularioEdicao">
+        <!-- Formulário de Edição (inicialmente oculto) -->
+        <div *ngIf="mostrarFormularioEdicao">
+           <form (ngSubmit)="salvarEdicao()">
+              <!-- Adicione os campos de edição desejados aqui -->
+              <h3>
+                 <strong>EDITAR REGISTRO</strong>
+              </h3>
+              <span>Nome Completo</span>
+              <input type="text" name="nome" [(ngModel)]="pessoaEditada.nome" required>
+              <span>Data de Nascimento</span>
+              <input type="text" name="data_nascimento" [(ngModel)]="pessoaEditada.data_nascimento" required>
+              <span>RG</span>
+              <input type="text" name="rg" [(ngModel)]="pessoaEditada.rg" required>
+              <span>CPF</span>
+              <input type="text" name="cpf" [(ngModel)]="pessoaEditada.cpf" required>
+              <span>Função</span>
+              <input type="text" name="função" [(ngModel)]="pessoaEditada.funcao" required>
+              <span>Data de Admissão</span>
+              <input type="text" name="data_admissao" [(ngModel)]="pessoaEditada.data_admissao" required>
+              <!-- Outros campos de edição -->
+              <div class="save-cancel">
+                 <button type="button" (click)="salvar()">Salvar</button>
+                 <button type="button" (click)="cancelarEdicao()">Cancelar</button>
+              </div>
+           </form>
+        </div>
+     </div>
+     <table mat-table [dataSource]="pessoas" class="mat-elevation-z8">
+        <!-- Nome Column -->
+        <ng-container matColumnDef="nome">
+           <th mat-header-cell *matHeaderCellDef> Nome </th>
+           <div *ngIf="colunasVisiveis.includes('nome')">
+              <td mat-cell *matCellDef="let element" >
+                 <div *ngIf="verMaisAtivo">{{ element.nome }}</div>
+                 <div *ngIf="!verMaisAtivo">{{ element.nome.split(' ')[0] }}</div>
+              </td>
+           </div>
+        </ng-container>
+        <!-- Data de Nascimento Column -->
+        <ng-container matColumnDef="data_nascimento">
+           <th mat-header-cell *matHeaderCellDef> Data de Nascimento </th>
+           <div *ngIf="colunasVisiveis.includes('data_nascimento')">
+              <td mat-cell *matCellDef="let element"> {{ element.data_nascimento | date:'dd/MM/yyyy' }} </td>
+           </div>
+        </ng-container>
+        <!-- RG Column -->
+        <ng-container matColumnDef="rg">
+           <th mat-header-cell *matHeaderCellDef> RG </th>
+           <div *ngIf="colunasVisiveis.includes('rg')">
+              <td mat-cell *matCellDef="let element"> {{ element.rg }} </td>
+           </div>
+        </ng-container>
+        <!-- CPF Column -->
+        <ng-container matColumnDef="cpf">
+           <th mat-header-cell *matHeaderCellDef> CPF </th>
+           <div *ngIf="colunasVisiveis.includes('cpf')">
+              <td mat-cell *matCellDef="let element"> {{ element.cpf }} </td>
+           </div>
+        </ng-container>
+        <!-- Função Column -->
+        <ng-container matColumnDef="funcao">
+           <th mat-header-cell *matHeaderCellDef> Função </th>
+           <div *ngIf="colunasVisiveis.includes('funcao')">
+              <td mat-cell *matCellDef="let element"> {{ element.funcao }} </td>
+           </div>
+        </ng-container>
+        <!-- Data de Admissão Column -->
+        <ng-container matColumnDef="data_admissao">
+           <th mat-header-cell *matHeaderCellDef> Data de Admissão </th>
+           <div *ngIf="colunasVisiveis.includes('data_admissao')">
+              <td mat-cell *matCellDef="let element"> {{ element.data_admissao | date:'dd/MM/yyyy' }} </td>
+           </div>
+        </ng-container>
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+           <th mat-header-cell *matHeaderCellDef> Ações </th>
+           <td mat-cell *matCellDef="let element">
+              <button class="actions" (click)="alternarVerMaisMenos()">
+              {{ verMaisAtivo ? 'Ver Menos' : 'Ver Mais' }}
+              </button>
+              <button class="actions" (click)="editarPessoa(element)">Editar</button>
+              <button class="actions" (click)="excluir( element.id_pessoa )">Excluir</button>
+           </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="colunasVisiveis">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: colunasVisiveis"></tr>
+     </table>
+  </div>
+</mat-card>
+<!-- person-list.component.html -->
+<button *ngIf="showBackToTopButton" (click)="scrollToTop()" class="back-to-top-button">
+<mat-icon>keyboard_arrow_up</mat-icon>
+</button>
