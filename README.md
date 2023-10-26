@@ -4,7 +4,7 @@
 
 ### Esta aplicação não está finaliza, ainda existêm muitos pontos a melhorar e reconstruir. Aos poucos esta aplicação será usada como objeto de estudos, devido ao pouco tempo que tive para trabalhar nela não pude implementar e construir muito do que imaginei, mas certamente evoluí muito construindo uma aplicação tão básica e tão rica em conhecimento importantes e fundamentais para o desenvolvimento full stack.
 
-## ATENÇÃO - As credenciais para acesso ao banco de dados estão expostaas propositalmente para análise do teste para vaga, ao finalizar o processo seletivo as credenciais irão ser excluídas, um arquivo .env com variaveis para as credenciais será criado para preservar as credenciais de acesso ao banco de dados, após será hospedado em uma platafomra serveless e o banco em um firebase ou supabase para preservar o funcionamento da aplicação para demostrativo.
+## ATENÇÃO - As credenciais para acesso ao banco de dados estão expostas propositalmente para análise do teste para vaga, ao finalizar o processo seletivo as credenciais irão ser excluídas, um arquivo .env com variaveis para as credenciais será criado para preservar as credenciais de acesso ao banco de dados, e este não é estar no repositório, após será hospedado em uma platafomra serveless e o banco em um firebase ou supabase para preservar o funcionamento da aplicação para demostrativo.
 
 ## Tecnologias Utilizadas
 
