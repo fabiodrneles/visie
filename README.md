@@ -13,6 +13,8 @@
 - MySQL
 - Angular 16
 
+  ## Rodar o comando 'node app.js' na raiz do projeto, para colocar o node para que a api possa estar disponivel.
+
 imagem da aplicação com o backend desligado.
 ![image](https://github.com/fabiodrneles/visie/assets/42509240/99f152bf-eecf-43b7-8881-28844cf78008)
 
